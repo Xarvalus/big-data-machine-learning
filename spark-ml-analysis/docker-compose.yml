@@ -1,0 +1,14 @@
+version: '3'
+
+# Based on https://github.com/Gradiant/dockerized-spark
+services:
+  spark:
+    image: gradiant/spark:2.4.4-alpine
+    volumes:
+      - ./:/opt/spark/spark-ml-analysis
+    stdin_open: true
+    tty: true
+    command: spark-submit
+      --packages org.apache.spark:spark-streaming-kafka-0-10_2.11:2.4.4,org.json4s:json4s-native_2.11:3.6.7
+      --master local[*]
+      --class "TransactionRegressorModel" /opt/spark/spark-ml-analysis/target/scala-2.11/spark-ml-analysis_2.11-0.1.0.jar

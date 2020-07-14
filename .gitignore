@@ -28,6 +28,9 @@ project/plugins/project/
 .worksheet
 /bin/
 
+# System
+.DS_Store
+
 # Lagom original
 ideatarget
 .target
